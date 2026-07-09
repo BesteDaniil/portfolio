@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Даниил — веб-разработчик | сайты для бизнеса под ключ</title>
+  <meta name="description" content="Делаю сайты-визитки и лендинги для бизнеса: адаптивная вёрстка, быстрая загрузка, публикация и домен под ключ. Чистый код без тяжёлых конструкторов." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Даниил — веб-разработчик" />
+  <meta property="og:title" content="Сайты, которые приводят клиентов" />
+  <meta property="og:description" content="Сайты-визитки и лендинги для бизнеса под ключ: адаптив, быстрая загрузка, запуск на вашем домене. Живые демо внутри." />
+  <meta property="og:url" content="https://bestedaniil.github.io/portfolio/" />
+  <meta property="og:image" content="https://bestedaniil.github.io/portfolio/images/zerno.jpg" />
+  <meta property="og:image:alt" content="Пример работы — сайт кофейни" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Сайты, которые приводят клиентов" />
+  <meta name="twitter:description" content="Сайты-визитки и лендинги для бизнеса под ключ. Живые демо внутри." />
+  <meta name="twitter:image" content="https://bestedaniil.github.io/portfolio/images/zerno.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Шапка ===== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="Даниил — на главную">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        </span>
+        <span class="logo__text">
+          <b>Даниил</b>
+          <em>Делаю сайты для бизнеса</em>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#works">Работы</a>
+        <a href="#skills">Что умею</a>
+        <a href="#process">Как работаю</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#contacts" class="btn btn--accent header__cta">Связаться</a>
+        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Главный экран ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner reveal">
+        <p class="hero__eyebrow">Веб-разработчик · чистый код</p>
+        <h1 class="hero__title">Сайты, которые<br /><span>приводят клиентов</span></h1>
+        <p class="hero__text">Адаптив под все экраны, быстрая загрузка и запуск под ключ — от макета до вашего домена. Показываю результат живой ссылкой, а не на словах.</p>
+        <div class="hero__actions">
+          <a href="#works" class="btn btn--accent btn--lg">Смотреть работы
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#contacts" class="btn btn--ghost btn--lg">Связаться</a>
+        </div>
+        <ul class="hero__points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Адаптив под телефон и десктоп</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Быстрая загрузка</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Запуск на вашем домене</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Работы ===== -->
+    <section class="works section" id="works">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Работы</p>
+          <h2 class="section__title">Живые проекты, а не картинки</h2>
+          <p class="section__lead">Каждый сайт можно открыть и потыкать прямо сейчас — меню, корзину, форму записи.</p>
+        </header>
+
+        <div class="works__grid">
+          <article class="project reveal">
+            <a class="project__shot" href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener" aria-label="Открыть сайт кофейни «Зерно»">
+              <img src="images/zerno.jpg" alt="Превью сайта кофейни «Зерно» — тёплый светлый дизайн с меню" loading="lazy" width="1200" height="750" />
+            </a>
+            <div class="project__body">
+              <h3 class="project__name">Кофейня «Зерно»</h3>
+              <p class="project__desc">Сайт-визитка с интерактивным меню и корзиной заказа. Тёплый фирменный стиль, категории напитков и выпечки, оформление заказа с проверкой данных. Адаптирован под телефон.</p>
+              <ul class="project__tags">
+                <li>корзина заказа</li>
+                <li>адаптив</li>
+                <li>HTML/CSS/JS</li>
+              </ul>
+              <a class="btn btn--accent project__link" href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">
+                Открыть сайт
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <a class="project__shot" href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener" aria-label="Открыть сайт барбершопа «ТОПОР»">
+              <img src="images/barbershop.jpg" alt="Превью сайта барбершопа «ТОПОР» — тёмный брутальный дизайн" loading="lazy" width="1200" height="750" />
+            </a>
+            <div class="project__body">
+              <h3 class="project__name">Барбершоп «ТОПОР»</h3>
+              <p class="project__desc">Лендинг в тёмном брутальном стиле: карточки услуг с ценами, мастера, отзывы. Форма онлайн-записи с валидацией даты и телефона — кривая заявка не пройдёт. Быстрая загрузка, аккуратная типографика.</p>
+              <ul class="project__tags">
+                <li>форма записи</li>
+                <li>валидация</li>
+                <li>адаптив</li>
+              </ul>
+              <a class="btn btn--accent project__link" href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">
+                Открыть сайт
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="works__note">Оба проекта — работающие демо: открывайте, тыкайте меню, корзину и форму записи.</p>
+      </div>
+    </section>
+
+    <!-- ===== Что умею ===== -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Что умею</p>
+          <h2 class="section__title">Всё, чтобы сайт работал на вас</h2>
+        </header>
+
+        <div class="skills__grid">
+          <article class="skill reveal">
+            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span>
+            <h3>Сайты-визитки и лендинги</h3>
+            <p>Страницы, которые продают, а не просто существуют: понятная структура и акцент на заявку.</p>
+          </article>
+          <article class="skill reveal">
+            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
+            <h3>Адаптивная вёрстка</h3>
+            <p>Одинаково аккуратно на телефоне, планшете и десктопе — проверяю на реальных размерах.</p>
+          </article>
+          <article class="skill reveal">
+            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+            <h3>Публикация и домен под ключ</h3>
+            <p>Размещу сайт в интернете и подключу ваш домен — вам останется только дать ссылку клиентам.</p>
+          </article>
+          <article class="skill reveal">
+            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <h3>Правки и поддержка</h3>
+            <p>Сайт живой: обновляю тексты, цены и разделы, когда у бизнеса что-то меняется.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Как работаю ===== -->
+    <section class="process section" id="process">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Как работаю</p>
+          <h2 class="section__title">Четыре простых шага</h2>
+          <p class="section__lead">Без сюрпризов: вы видите прогресс на каждом этапе.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <h3>Обсуждаем задачу</h3>
+            <p>Созвон или переписка: цели, референсы, сроки. Разбираемся, что и зачем нужно.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">02</span>
+            <h3>Делаю и показываю живую ссылку</h3>
+            <p>Вы смотрите результат прямо в браузере — на реальном сайте, а не на словах.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">03</span>
+            <h3>Правим до результата</h3>
+            <p>Вношу правки, пока не станет как надо. Согласовываем — и идём дальше.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">04</span>
+            <h3>Запускаю на вашем домене</h3>
+            <p>Публикую, подключаю домен и показываю, как обновлять контент самому.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Контакты ===== -->
+    <section class="contacts section" id="contacts">
+      <div class="container contacts__inner reveal">
+        <p class="eyebrow">Контакты</p>
+        <h2 class="section__title">Нужен сайт? Напишите</h2>
+        <p class="contacts__text">Расскажите про задачу в двух словах — предложу решение и покажу примеры. Отвечаю в Telegram.</p>
+        <a href="https://t.me/ЗАМЕНИ" class="btn btn--accent btn--lg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+          Написать в Telegram
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Подвал ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        Даниил
+      </span>
+      <p class="footer__copy">© 2026 · Сайты для бизнеса под ключ</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
