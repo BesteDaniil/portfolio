@@ -27,12 +27,24 @@
   /* ---- Появление при скролле ---- */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && reveals.length) {
-    var io = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('is-visible'); obs.unobserve(en.target); }
-      });
-    }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
+    var show = function (el) { el.classList.add('is-visible'); io.unobserve(el); };
+    // Запуск заранее (за 15% экрана), чтобы при быстрой прокрутке не было пустоты
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) show(en.target); });
+    }, { threshold: 0, rootMargin: '0px 0px 15% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
+    // Страховка при рывке прокрутки или переходе по якорю
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        reveals.forEach(function (el) {
+          if (!el.classList.contains('is-visible') && el.getBoundingClientRect().top < window.innerHeight) show(el);
+        });
+        ticking = false;
+      });
+    }, { passive: true });
   } else {
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
   }

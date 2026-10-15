@@ -76,8 +76,13 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
 /* ===== Шапка ===== */
 .header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(11, 12, 16, .72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
+}
+/* Размытие — на псевдоэлементе: backdrop-filter на самой шапке сделал бы её «рамкой» для
+   position: fixed, и мобильное меню растягивалось бы только на высоту шапки */
+.header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: rgba(11, 12, 16, .72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 74px; }
 .logo { display: flex; align-items: center; gap: 12px; }
@@ -262,7 +267,7 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
 .footer__copy { color: var(--muted); font-size: 14px; }
 
 /* ===== Появление при скролле ===== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ===== Адаптив ===== */
