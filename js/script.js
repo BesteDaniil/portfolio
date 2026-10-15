@@ -15,7 +15,7 @@
       nav.classList.toggle('open', isOpen);
       burger.classList.toggle('open', isOpen);
       burger.setAttribute('aria-expanded', String(isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.documentElement.style.overflow = isOpen ? 'hidden' : '';  // на html: блок на body ломает липкую шапку
     };
     burger.addEventListener('click', function () { toggle(); });
     nav.querySelectorAll('a').forEach(function (a) {
