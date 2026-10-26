@@ -240,7 +240,8 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
 .step p { color: var(--muted); font-size: 15px; }
 
 /* ===== Цены ===== */
-.prices__grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 20px; align-items: stretch; }
+.prices__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.prices__sub { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; margin: 44px 0 18px; }
 .price { padding: 28px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; }
 .price--main { background: linear-gradient(160deg, rgba(59, 130, 246, .18), rgba(56, 189, 248, .08) 60%, var(--surface)); border-color: rgba(56, 189, 248, .4); }
 .price__tag { align-self: flex-start; padding: 5px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--grad); color: var(--white); margin-bottom: 16px; }
@@ -250,6 +251,47 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
 .price ul { list-style: none; display: grid; gap: 8px; color: var(--muted); font-size: 14.5px; }
 .price li { position: relative; padding-left: 16px; }
 .price li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ===== Условия работы (в «Как работаю») ===== */
+.terms { margin-top: 56px; }
+.terms__title { font-size: 26px; margin-bottom: 20px; }
+.terms__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.term { padding: 26px 24px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.term h4 { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px; }
+.term p { color: var(--muted); font-size: 15px; }
+.term__list { list-style: none; display: grid; gap: 8px; }
+.term__list li { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.term__list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.term__list b { color: var(--text); font-weight: 600; white-space: nowrap; }
+
+/* ===== FAQ: аккордеон на <details> — клавиатура и тач работают без JS ===== */
+.faq__list { display: grid; gap: 14px; max-width: 860px; }
+.faq__item { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); transition: border-color .3s; }
+.faq__item[open] { border-color: rgba(59, 130, 246, .45); }
+.faq__item summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  padding: 22px 26px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: ""; flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--accent-dim)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237dd3fc' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / 16px no-repeat;
+  transition: transform .35s var(--ease);
+}
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item summary:hover { color: var(--white); }
+.faq__item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--radius); }
+.faq__answer { padding: 0 26px 22px; color: var(--muted); font-size: 15.5px; }
+.faq__answer a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ===== Отзыв в кейсе (пока закомментирован в HTML) — кавычки и курсив, как отзывы салона ===== */
+.case__review { position: relative; margin: 0 0 20px; padding: 18px 20px 16px 52px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
+.case__review::before { content: "“"; position: absolute; left: 16px; top: 4px; font-family: Georgia, serif; font-size: 52px; line-height: 1; color: var(--accent-2); }
+.case__review p { font-style: italic; color: var(--text); }
+.case__review footer { margin-top: 8px; font-size: 13px; color: var(--muted); }
+
+/* Якоря не прячутся под липкой шапкой */
+section[id], #terms-time { scroll-margin-top: 90px; }
 
 /* ===== Контакты ===== */
 .contacts__inner {
@@ -276,8 +318,9 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
   .hero__inner { grid-template-columns: 1fr; gap: 64px; }
   .hero__showcase { max-width: 720px; }
   .case { grid-template-columns: 1fr; }
-  .skills__grid, .steps { grid-template-columns: repeat(2, 1fr); }
+  .skills__grid, .steps, .terms__grid { grid-template-columns: repeat(2, 1fr); }
   .prices__grid { grid-template-columns: 1fr 1fr; }
+  .prices__grid .price--main, .prices__grid--extra .price:last-child { grid-column: span 2; }
 }
 @media (max-width: 860px) {
   /* Меню на весь экран: невидимо, поэтому не раздувает ширину страницы */
@@ -308,7 +351,10 @@ h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; line-height: 1.1
   .case__media { padding-bottom: 48px; }
   .case__foot { flex-direction: column; align-items: flex-start; }
   .case__price { text-align: left; }
-  .skills__grid, .steps, .prices__grid { grid-template-columns: 1fr; }
+  .skills__grid, .steps, .prices__grid, .terms__grid { grid-template-columns: 1fr; }
+  .prices__grid .price--main, .prices__grid--extra .price:last-child { grid-column: auto; }
+  .faq__item summary { padding: 18px 18px; font-size: 16.5px; }
+  .faq__answer { padding: 0 18px 18px; }
   .contacts__inner { padding: 52px 20px; border-radius: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
