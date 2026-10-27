@@ -10,7 +10,7 @@
   /* ---- Адрес сайта Look Star — единственное место, которое меняем при привязке домена ---- */
   var LOOKSTAR_URL = "https://look-star.ru/";
 
-  // Ссылки с data-lookstar="путь" получают полный адрес; в HTML у них запасной href на сам кейс
+  // Ссылки с data-lookstar="путь" получают полный адрес; в HTML тот же адрес прописан на случай, если JS не выполнится
   document.querySelectorAll("[data-lookstar]").forEach(function (link) {
     link.href = LOOKSTAR_URL + link.getAttribute("data-lookstar");
   });
