@@ -8,7 +8,7 @@
   "use strict";
 
   /* ---- Адрес сайта Look Star — единственное место, которое меняем при привязке домена ---- */
-  var LOOKSTAR_URL = "https://bestedaniil.github.io/salon-site/";
+  var LOOKSTAR_URL = "https://look-star.ru/";
 
   // Ссылки с data-lookstar="путь" получают полный адрес; в HTML у них запасной href на сам кейс
   document.querySelectorAll("[data-lookstar]").forEach(function (link) {
