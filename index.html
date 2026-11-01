@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
 </head>
 <body>
 
@@ -118,9 +118,9 @@
     <!-- ===== Цифры ===== -->
     <section class="stats" aria-label="Коротко в цифрах">
       <div class="container stats__grid">
-        <div class="stat reveal"><b data-count="3">3</b><span>живых сайта<br />в портфолио</span></div>
+        <div class="stat reveal"><b data-count="4">4</b><span>живых сайта<br />в портфолио</span></div>
         <div class="stat reveal"><b data-count="7">7</b><span>страниц в последнем<br />проекте под ключ</span></div>
-        <div class="stat reveal"><b data-count="4">4</b><span>ширины экрана в каждой<br />проверке — от 320 px</span></div>
+        <div class="stat reveal"><b data-count="4">4</b><span>ширины экрана в каждой<br />проверке — от 320&nbsp;px</span></div>
         <div class="stat reveal"><b>0</b><span>конструкторов —<br />только чистый код</span></div>
       </div>
     </section>
@@ -217,6 +217,26 @@
                 <li>адаптив</li>
               </ul>
               <a class="link-arrow" href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">
+                Открыть сайт
+                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+              </a>
+            </div>
+          </article>
+
+          <article class="project spot reveal">
+            <a class="frame project__shot" href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener" aria-label="Открыть сайт детейлинг-центра STEEL &amp; GLOSS">
+              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+              <img src="images/steel-gloss.jpg" alt="Превью сайта детейлинг-центра STEEL &amp; GLOSS — конфигуратор и карта кузова" loading="lazy" width="1200" height="750" />
+            </a>
+            <div class="project__body">
+              <h3 class="project__name">Детейлинг STEEL &amp; GLOSS</h3>
+              <p class="project__desc">Многостраничный сайт с онлайн-расчётом: клиент выбирает класс машины и пакеты, отмечает зоны бронеплёнки на SVG-схеме кузова и получает точную смету. Выбор сохраняется между страницами. Форма заявки с маской телефона.</p>
+              <ul class="tags">
+                <li>онлайн-расчёт</li>
+                <li>4 страницы</li>
+                <li>тесты</li>
+              </ul>
+              <a class="link-arrow" href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">
                 Открыть сайт
                 <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
               </a>
@@ -332,33 +352,48 @@
 
         <div class="prices__grid">
           <article class="price spot reveal">
-            <h3>Сайт-визитка</h3>
+            <h3>Сайт на одной странице</h3>
+            <p class="price__sub">Визитка или лендинг</p>
             <p class="price__val"><small>от</small> 10 000 ₽</p>
-            <ul>
-              <li>Одна страница: о вас, услуги, контакты</li>
-              <li>Адаптив под все экраны</li>
-            </ul>
+            <h4 class="price__label">Кому</h4>
+            <p class="price__text">чтобы быстро появиться в интернете, рекламировать одну услугу, акцию или мастера.</p>
+            <h4 class="price__label">Что получаете</h4>
+            <p class="price__text">одна страница, где клиент сразу видит главное и оставляет заявку.</p>
+            <h4 class="price__label">Примеры:</h4>
+            <p class="price__text price__links">
+              <a href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">Кофейня «Зерно»</a>
+              <a href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">Барбершоп «ТОПОР»</a>
+            </p>
           </article>
           <article class="price spot reveal">
-            <h3>Лендинг</h3>
-            <p class="price__val"><small>от</small> 20 000 ₽</p>
-            <ul>
-              <li>Продающая страница под заявку</li>
-              <li>Формы, отзывы, прайс</li>
-            </ul>
+            <h3>Сайт с онлайн-расчётом</h3>
+            <p class="price__sub">Калькулятор или конфигуратор</p>
+            <p class="price__val"><small>от</small> 40 000 ₽</p>
+            <h4 class="price__label">Кому</h4>
+            <p class="price__text">если клиенты постоянно спрашивают «сколько будет стоить?», а менеджер тратит на это время.</p>
+            <h4 class="price__label">Что получаете</h4>
+            <p class="price__text">клиент сам выбирает услуги и видит точную цену, а вам приходит готовая заявка со сметой.</p>
+            <h4 class="price__label">Пример:</h4>
+            <p class="price__text price__links">
+              <a href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">Детейлинг STEEL &amp; GLOSS — смета по зонам кузова</a>
+            </p>
           </article>
           <article class="price price--main spot reveal">
-            <p class="price__tag">Как Look Star</p>
-            <h3>Многостраничный сайт</h3>
+            <h3>Сайт компании</h3>
+            <p class="price__sub">Несколько страниц</p>
             <p class="price__val"><small>от</small> 50 000 ₽</p>
-            <ul>
-              <li>Свой дизайн, несколько страниц</li>
-              <li>Подготовка фото, прайс, отзывы, запись</li>
-              <li>Публикация в интернете</li>
-            </ul>
-            <a href="https://t.me/Beste_Daniil" class="btn btn--accent price__btn" target="_blank" rel="noopener">Обсудить проект</a>
+            <h4 class="price__label">Кому</h4>
+            <p class="price__text">если у вас много услуг, большой прайс, галерея работ или несколько точек.</p>
+            <h4 class="price__label">Что получаете</h4>
+            <p class="price__text">у каждой услуги своя страница, прайс раскрывается списками, есть отзывы и запись в один клик.</p>
+            <h4 class="price__label">Пример:</h4>
+            <p class="price__text price__links">
+              <a href="https://look-star.ru/" data-lookstar="" target="_blank" rel="noopener">Студия красоты Look Star — 7&nbsp;страниц</a>
+            </p>
           </article>
         </div>
+
+        <p class="prices__cta reveal"><a href="https://t.me/Beste_Daniil" class="btn btn--accent" target="_blank" rel="noopener">Обсудить проект</a></p>
 
         <div class="extras reveal">
           <p class="extras__title">Дополнительно</p>
