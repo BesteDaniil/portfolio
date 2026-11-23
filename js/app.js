@@ -4,6 +4,7 @@
 
 import { createAssembly } from "./assemble.js";
 import { createSwarm } from "./swarm.js";
+import { createMenu } from "./menu.js";
 
 const mobileQuery = window.matchMedia("(max-width: 700px)");
 const stillQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -21,6 +22,13 @@ function updateCaption() {
 }
 updateCaption();
 mobileQuery.addEventListener("change", updateCaption);
+
+// Меню на телефоне; с 720 px видны обычные пункты в шапке
+const menu = createMenu(
+  document.getElementById("menuButton"),
+  document.getElementById("mobileMenu"),
+  window.matchMedia("(min-width: 720px)")
+);
 
 const canvas = document.getElementById("swarmCanvas");
 const swarm = canvas && canvas.getContext ? createSwarm(canvas, { still: stillQuery.matches }) : null;
@@ -59,5 +67,6 @@ window.addEventListener("keydown", function (event) {
 // Для проверок (Playwright): состояние сборки и роя
 window.__portfolio = {
   assembly: assembly,
-  swarm: swarm
+  swarm: swarm,
+  menu: menu
 };

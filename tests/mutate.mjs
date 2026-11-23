@@ -37,6 +37,8 @@ const MUTATIONS = [
   { name: "Easing: доля пути считается от конца", file: "js/easing.js", find: "return clamp01((now - start) / duration);", replace: "return clamp01((now - start) / (duration * 2));" },
   { name: "Контент: index.html отстал от content.js", file: "js/content.js", find: "role: \"Разрабатываю сайты и автоматизацию\",", replace: "role: \"Разрабатываю сайты\"," },
   { name: "Контент: ссылка на проект без новой вкладки", file: "js/render.js", find: "return \"href=\\\"\" + escapeHtml(url) + \"\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\"\";", replace: "return \"href=\\\"\" + escapeHtml(url) + \"\\\"\";" },
+  { name: "Контент: цена поддержки изменена", file: "js/content.js", find: "price: \"3–5 тыс. ₽\", per: \"/ мес\"", replace: "price: \"5 тыс. ₽\", per: \"/ мес\"" },
+  { name: "Контент: в меню телефона нет «Контакты»", file: "js/content.js", find: "    { href: \"#contact\", label: \"Контакты\" }\n", replace: "" },
   { name: "Контент: текст не экранируется", file: "js/render.js", find: "  return String(value).replace(/[&<>\"]/g, function (char) {", replace: "  return String(value).replace(/[\"]/g, function (char) {" }
 ];
 
@@ -57,7 +59,17 @@ const E2E_MUTATIONS = [
   { name: "UI: на телефоне 18 курсоров сборки", file: "js/app.js", find: "  return mobileQuery.matches;", replace: "  return false;" },
   { name: "UI: первый экран дольше 5 секунд", file: "js/assemble.js", find: "    clock += dt * rate;", replace: "    clock += dt * rate * 0.4;" },
   { name: "UI: повторный визит снова с анимацией", file: "index.html", find: "seen = window.sessionStorage.getItem(\"portfolio:assembled\") === \"1\";", replace: "seen = false;" },
-  { name: "UI: шрифт с Google Fonts", file: "index.html", find: "  <link rel=\"stylesheet\" href=\"css/style.css?v=10\">", replace: "  <link rel=\"stylesheet\" href=\"css/style.css?v=10\">\n  <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter\">" },
+  { name: "UI: шрифт с Google Fonts", file: "index.html", find: "  <link rel=\"stylesheet\" href=\"css/style.css?v=11\">", replace: "  <link rel=\"stylesheet\" href=\"css/style.css?v=11\">\n  <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Inter\">" },
+  { name: "Меню: кнопка не появляется", file: "js/menu.js", find: "  button.hidden = false;", replace: "" },
+  { name: "Меню: aria-expanded не меняется", file: "js/menu.js", find: "    button.setAttribute(\"aria-expanded\", \"true\");", replace: "    button.dataset.open = \"1\";" },
+  { name: "Меню: Esc не закрывает", file: "js/menu.js", find: "    if (event.key === \"Escape\" && isOpen()) {", replace: "    if (event.key === \"Esc\" && isOpen()) {" },
+  { name: "Меню: Esc не возвращает фокус", file: "js/menu.js", find: "    if (returnFocus) {\n      button.focus();", replace: "    if (returnFocus) {\n      void 0;" },
+  { name: "Меню: клик мимо не закрывает", file: "js/menu.js", find: "!panel.contains(target) && !button.contains(target)) {\n      close(false);", replace: "!panel.contains(target) && !button.contains(target)) {\n      void 0;" },
+  { name: "Меню: пункт не закрывает меню", file: "js/menu.js", find: "    if (event.target instanceof Element && event.target.closest(\"a\")) {\n      close(false);", replace: "    if (event.target instanceof Element && event.target.closest(\"a\")) {\n      void 0;" },
+  { name: "Меню: уход фокуса не закрывает", file: "js/menu.js", find: "  panel.addEventListener(\"focusout\", onFocusOut);\n  button.addEventListener(\"focusout\", onFocusOut);", replace: "" },
+  { name: "Меню: Shift+Tab с кнопки не закрывает", file: "js/menu.js", find: "  button.addEventListener(\"focusout\", onFocusOut);", replace: "" },
+  { name: "Меню: на широком экране остаётся открытым", file: "js/menu.js", find: "      if (wideQuery.matches) {\n        close(false);", replace: "      if (wideQuery.matches) {\n        void 0;" },
+  { name: "Меню: видно и на ПК", file: "css/style.css", find: "  .menu-btn:not([hidden]),\n  .mmenu:not([hidden]) {\n    display: none;", replace: "  .menu-btn:not([hidden]),\n  .mmenu:not([hidden]) {\n    opacity: 1;" },
   { name: "UI: ошибка в консоли", file: "js/app.js", find: "// Для проверок (Playwright): состояние сборки и роя", replace: "console.error(\"сломано\");\n// Для проверок (Playwright): состояние сборки и роя" },
   { name: "UI: картинки остаются скрытыми после сборки", file: "css/style.css", find: ".assembling [data-build~=\"image\"]:not(.b-image) :is(img, svg) {", replace: "[data-build~=\"image\"]:not(.b-image) :is(img, svg) {" },
   { name: "UI: горизонтальный скролл", file: "css/style.css", find: ".crew {\n  position: fixed;", replace: ".crew {\n  min-width: 2000px;\n  position: absolute;" }
@@ -124,7 +136,10 @@ if (baseline.fail > 0 || baseline.crashed) {
   process.exit(1);
 }
 
-const LIST = E2E ? E2E_MUTATIONS : MUTATIONS;
+// ONLY=Меню npm run mutate -- --e2e — только поломки, в имени которых есть эта строка
+const LIST = (E2E ? E2E_MUTATIONS : MUTATIONS).filter(function (mutation) {
+  return !process.env.ONLY || mutation.name.includes(process.env.ONLY);
+});
 let survived = 0;
 for (const mutation of LIST) {
   const filePath = path.join(root, mutation.file);

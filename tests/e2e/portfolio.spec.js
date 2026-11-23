@@ -305,6 +305,90 @@ test("10 и 11. ни одного запроса к чужим доменам, �
   expect(seen.problems).toEqual([]);
 });
 
+test("12. меню на телефоне: клавиатура, aria-expanded, Esc, клик мимо, пункт", async function ({ browser }) {
+  // Без JS кнопки нет (она ничего бы не делала), меню закрыто
+  const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 375, height: 800 } });
+  const plain = await noJs.newPage();
+  await plain.goto("./");
+  await expect(plain.locator("#menuButton")).toBeHidden();
+  await expect(plain.locator("#mobileMenu")).toBeHidden();
+  await noJs.close();
+
+  const context = await browser.newContext({ viewport: { width: 375, height: 800 }, reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto("./");
+  const button = page.locator("#menuButton");
+  const menu = page.locator("#mobileMenu");
+  await expect(button).toBeVisible();
+  await expect(button).toHaveAttribute("aria-controls", "mobileMenu");
+  await expect(button).toHaveAccessibleName("Меню");
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+  await expect(menu).toBeHidden();
+
+  // До кнопки можно дойти Tab-ом
+  let reached = false;
+  for (let step = 0; step < 6 && !reached; step++) {
+    await page.keyboard.press("Tab");
+    reached = await page.evaluate(function () { return document.activeElement && document.activeElement.id === "menuButton"; });
+  }
+  expect(reached, "Tab не доходит до кнопки меню").toBe(true);
+
+  // Enter открывает; пункты — Работы, Цены, Контакты; Tab идёт в меню
+  await page.keyboard.press("Enter");
+  await expect(button).toHaveAttribute("aria-expanded", "true");
+  await expect(menu).toBeVisible();
+  await expect(menu.locator("a")).toHaveText(["Работы", "Цены", "Контакты"]);
+  expect(await menu.locator("a").evaluateAll(function (links) {
+    return links.map(function (link) { return link.getAttribute("href"); });
+  })).toEqual(["#work", "#prices", "#contact"]);
+  await page.keyboard.press("Tab");
+  await expect(menu.locator("a").first()).toBeFocused();
+
+  // Esc закрывает и возвращает фокус на кнопку
+  await page.keyboard.press("Escape");
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+  await expect(menu).toBeHidden();
+  await expect(button).toBeFocused();
+
+  // Пробел открывает, клик мимо закрывает
+  await page.keyboard.press("Space");
+  await expect(menu).toBeVisible();
+  // Мимо — по картинке, которая не берёт фокус (иначе меню закрыл бы уход фокуса, а не клик)
+  await page.locator(".hero__art").click({ position: { x: 20, y: 20 } });
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+  await expect(menu).toBeHidden();
+
+  // Пункт меню: закрывает меню и ведёт к разделу
+  await button.click();
+  await menu.getByText("Цены", { exact: true }).click();
+  await expect(menu).toBeHidden();
+  await expect.poll(function () {
+    return page.evaluate(function () { return Math.round(document.getElementById("prices").getBoundingClientRect().top); });
+  }).toBeLessThan(100);
+
+  // Tab за последний пункт — меню закрывается; Shift+Tab с кнопки назад — тоже
+  await page.evaluate(function () { window.scrollTo({ top: 0, behavior: "instant" }); });
+  await button.click();
+  await menu.locator("a").last().focus();
+  await page.keyboard.press("Tab");
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+  await expect(menu).toBeHidden();
+  await button.focus();
+  await page.keyboard.press("Enter");
+  await expect(menu).toBeVisible();
+  await page.keyboard.press("Shift+Tab");
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+
+  // На ПК кнопки нет — обычные пункты в шапке; открытое меню закрывается при переходе на широкий экран
+  await button.click();
+  await expect(menu).toBeVisible();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await expect(button).toHaveAttribute("aria-expanded", "false");
+  await expect(button).toBeHidden();
+  await expect(page.locator(".nav")).toBeVisible();
+  await context.close();
+});
+
 test("повторный визит в той же вкладке — без анимации; клавиатура и фокус видны", async function ({ page }) {
   await page.goto("./");
   await page.keyboard.press("Escape");

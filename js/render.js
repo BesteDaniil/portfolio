@@ -24,6 +24,7 @@ function external(url) {
 }
 
 const ICON_TELEGRAM = "<svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m22 2-7 20-4-9-9-4Z\"/><path d=\"M22 2 11 13\"/></svg>";
+const ICON_MENU = "<svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path class=\"menu-btn__open\" d=\"M4 7h16M4 12h16M4 17h16\"/><path class=\"menu-btn__close\" d=\"M6 6l12 12M18 6 6 18\"/></svg>";
 const ICON_ARROW = "<svg class=\"icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M8 7h9v9\"/></svg>";
 
 /* Иллюстрация вместо фото: окно браузера, которое собирают курсоры */
@@ -61,12 +62,18 @@ function renderHeader(content) {
   const links = content.nav.map(function (item) {
     return "<a class=\"nav__link\" href=\"" + escapeHtml(item.href) + "\">" + escapeHtml(item.label) + "</a>";
   }).join("");
+  const mobileLinks = content.mobileNav.map(function (item) {
+    return "<a class=\"mmenu__link\" href=\"" + escapeHtml(item.href) + "\">" + escapeHtml(item.label) + "</a>";
+  }).join("");
   return [
     "<header class=\"top\">",
     "<div class=\"container top__inner\">",
     "<a class=\"logo\" href=\"#top\"" + build("frame text") + "><span class=\"logo__mark\" aria-hidden=\"true\">D</span>" + escapeHtml(content.hero.name) + "</a>",
     "<nav class=\"nav\" aria-label=\"Разделы\"" + build("frame text") + ">" + links + "</nav>",
     "<a class=\"btn btn--small btn--ghost top__tg\" " + external(content.telegram.url) + build("frame text color") + ">" + ICON_TELEGRAM + "<span>Telegram</span></a>",
+    // Меню на телефоне: без JS кнопка скрыта (hidden), js/menu.js её показывает
+    "<button class=\"menu-btn\" type=\"button\" id=\"menuButton\" aria-expanded=\"false\" aria-controls=\"mobileMenu\" aria-label=\"Меню\" hidden" + build("frame color") + ">" + ICON_MENU + "</button>",
+    "<nav class=\"mmenu\" id=\"mobileMenu\" aria-label=\"Разделы сайта\" hidden>" + mobileLinks + "</nav>",
     "</div>",
     "</header>"
   ].join("\n");
@@ -187,6 +194,21 @@ function renderPriceCard(card) {
   ].join("\n");
 }
 
+function renderExtras(extras) {
+  const items = extras.items.map(function (item) {
+    const per = item.per ? " <small>" + escapeHtml(item.per) + "</small>" : "";
+    return "<li class=\"extra\"><div><h4 class=\"extra__title\">" + escapeHtml(item.title) + "</h4><p class=\"extra__text\">" + escapeHtml(item.text) + "</p></div><b class=\"extra__price\">" + escapeHtml(item.price) + per + "</b></li>";
+  }).join("\n");
+  return [
+    "<div class=\"extras\" id=\"extras\"" + build("frame reveal text check") + ">",
+    "<h3 class=\"extras__title\">" + escapeHtml(extras.title) + "</h3>",
+    "<ul class=\"extras__list\">",
+    items,
+    "</ul>",
+    "</div>"
+  ].join("\n");
+}
+
 function renderPrices(content) {
   const prices = content.prices;
   return [
@@ -196,6 +218,7 @@ function renderPrices(content) {
     "<div class=\"prices\">",
     prices.cards.map(renderPriceCard).join("\n"),
     "</div>",
+    renderExtras(prices.extras),
     "<p class=\"prices__cta\"><a class=\"btn btn--accent\" " + external(content.telegram.url) + build("frame text color check") + ">" + escapeHtml(prices.cta) + "</a></p>",
     "</div>",
     "</section>"

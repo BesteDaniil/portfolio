@@ -20,6 +20,27 @@ test("контент: заглушек нет, все проекты и цены
   assert.deepEqual(content.prices.cards.map(function (card) { return card.price; }), ["10 000 ₽", "40 000 ₽", "50 000 ₽"]);
 });
 
+test("контент: «Дополнительно» — цены из прежнего портфолио без изменений, есть в HTML", function () {
+  const extras = content.prices.extras.items.map(function (item) {
+    return [item.title, item.price, item.per];
+  });
+  assert.deepEqual(extras, [
+    ["Новый раздел", "10–15 тыс. ₽", ""],
+    ["Подключение домена", "3–5 тыс. ₽", ""],
+    ["Поддержка", "3–5 тыс. ₽", "/ мес"]
+  ]);
+  assert.ok(html.includes("<h3 class=\"extras__title\">Дополнительно</h3>"));
+  assert.ok(html.includes(escapeHtml("3–5 тыс. ₽") + " <small>/ мес</small>"));
+});
+
+test("контент: меню телефона — Работы, Цены, Контакты, и каждый якорь есть на странице", function () {
+  assert.deepEqual(content.mobileNav.map(function (item) { return item.label; }), ["Работы", "Цены", "Контакты"]);
+  for (const item of content.mobileNav) {
+    assert.ok(html.includes("id=\"" + item.href.slice(1) + "\""), item.href);
+  }
+  assert.match(html, /<button class="menu-btn"[^>]*aria-expanded="false"[^>]*aria-controls="mobileMenu"[^>]*hidden/);
+});
+
 test("контент: ссылки на проекты — в новой вкладке; у хаба ссылки нет", function () {
   const body = renderBody(content);
   for (const project of content.work.projects) {

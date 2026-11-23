@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#0b0d12">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b0d12'/%3E%3Cpath d='M10 7v17l4.6-4 3.3 7.2 3.2-1.4-3.3-7.1h6Z' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preload" href="fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
   <script>
     /* До первой отрисовки: собирать ли страницу курсорами. Не собираем при «уменьшить движение»
        и при повторном визите в этой вкладке (R запускает вручную). Без JS страница сразу полная. */
@@ -39,15 +39,16 @@
   </script>
   <script type="importmap">
     { "imports": {
-      "./js/assemble.js": "./js/assemble.js?v=10",
-      "./js/swarm.js": "./js/swarm.js?v=10",
-      "./js/timeline.js": "./js/timeline.js?v=10",
-      "./js/shapes.js": "./js/shapes.js?v=10",
-      "./js/easing.js": "./js/easing.js?v=10",
-      "./js/random.js": "./js/random.js?v=10"
+      "./js/assemble.js": "./js/assemble.js?v=11",
+      "./js/swarm.js": "./js/swarm.js?v=11",
+      "./js/timeline.js": "./js/timeline.js?v=11",
+      "./js/shapes.js": "./js/shapes.js?v=11",
+      "./js/easing.js": "./js/easing.js?v=11",
+      "./js/random.js": "./js/random.js?v=11",
+      "./js/menu.js": "./js/menu.js?v=11"
     } }
   </script>
-  <script type="module" src="js/app.js?v=10"></script>
+  <script type="module" src="js/app.js?v=11"></script>
 </head>
 <body>
   <!-- content:body -->
@@ -57,6 +58,8 @@
 <a class="logo" href="#top" data-build="frame text"><span class="logo__mark" aria-hidden="true">D</span>Daniil</a>
 <nav class="nav" aria-label="Разделы" data-build="frame text"><a class="nav__link" href="#work">Работы</a><a class="nav__link" href="#stack">Стек</a><a class="nav__link" href="#prices">Цены</a><a class="nav__link" href="#faq">FAQ</a></nav>
 <a class="btn btn--small btn--ghost top__tg" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener" data-build="frame text color"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Telegram</span></a>
+<button class="menu-btn" type="button" id="menuButton" aria-expanded="false" aria-controls="mobileMenu" aria-label="Меню" hidden data-build="frame color"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path class="menu-btn__open" d="M4 7h16M4 12h16M4 17h16"/><path class="menu-btn__close" d="M6 6l12 12M18 6 6 18"/></svg></button>
+<nav class="mmenu" id="mobileMenu" aria-label="Разделы сайта" hidden><a class="mmenu__link" href="#work">Работы</a><a class="mmenu__link" href="#prices">Цены</a><a class="mmenu__link" href="#contact">Контакты</a></nav>
 </div>
 </header>
 <main id="main">
@@ -183,6 +186,14 @@
 <h4 class="price__label">Пример:</h4>
 <p class="price__text price__links"><a href="https://look-star.ru/" target="_blank" rel="noopener">Студия красоты Look Star — 7 страниц</a></p>
 </article>
+</div>
+<div class="extras" id="extras" data-build="frame reveal text check">
+<h3 class="extras__title">Дополнительно</h3>
+<ul class="extras__list">
+<li class="extra"><div><h4 class="extra__title">Новый раздел</h4><p class="extra__text">Например, мастера с фото и описаниями — в стиле сайта, на всех экранах</p></div><b class="extra__price">10–15 тыс. ₽</b></li>
+<li class="extra"><div><h4 class="extra__title">Подключение домена</h4><p class="extra__text">Настройка DNS и HTTPS. Сам домен оплачивается отдельно</p></div><b class="extra__price">3–5 тыс. ₽</b></li>
+<li class="extra"><div><h4 class="extra__title">Поддержка</h4><p class="extra__text">Цены, акции, фото, тексты. Без админки — правки делаю я</p></div><b class="extra__price">3–5 тыс. ₽ <small>/ мес</small></b></li>
+</ul>
 </div>
 <p class="prices__cta"><a class="btn btn--accent" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener" data-build="frame text color check">Обсудить проект</a></p>
 </div>
