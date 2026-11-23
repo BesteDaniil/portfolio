@@ -1,491 +1,227 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daniil — веб-разработчик | сайты для бизнеса под ключ</title>
-  <meta name="description" content="Делаю сайты-визитки и лендинги для бизнеса: адаптивная вёрстка, быстрая загрузка, публикация и домен под ключ. Чистый код без тяжёлых конструкторов." />
-  <meta name="theme-color" content="#050a14" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Daniil — веб-разработчик" />
-  <meta property="og:title" content="Сайты, которые приводят клиентов" />
-  <meta property="og:description" content="Сайты-визитки и лендинги для бизнеса под ключ: адаптив, быстрая загрузка, запуск на вашем домене. Живые демо внутри." />
-  <meta property="og:url" content="https://bestedaniil.github.io/portfolio/" />
-  <meta property="og:image" content="https://bestedaniil.github.io/portfolio/images/og.jpg" />
-  <meta property="og:image:alt" content="Портфолио Daniil — сайты для бизнеса" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Сайты, которые приводят клиентов" />
-  <meta name="twitter:description" content="Сайты-визитки и лендинги для бизнеса под ключ. Живые демо внутри." />
-  <meta name="twitter:image" content="https://bestedaniil.github.io/portfolio/images/og.jpg" />
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M12 11l-5 5 5 5M20 11l5 5-5 5M18 9l-4 14' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="css/style.css?v=8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- content:meta -->
+<title>Daniil — сайты и автоматизация</title>
+<meta name="description" content="Разрабатываю сайты и автоматизацию: живые проекты, которые можно открыть и потыкать. Сайты для бизнеса под ключ, онлайн-расчёты, центр заявок, команда ИИ-агентов.">
+<link rel="canonical" href="https://bestedaniil.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bestedaniil.github.io/portfolio/">
+<meta property="og:title" content="Daniil — сайты и автоматизация">
+<meta property="og:description" content="Разрабатываю сайты и автоматизацию: живые проекты, которые можно открыть и потыкать. Сайты для бизнеса под ключ, онлайн-расчёты, центр заявок, команда ИИ-агентов.">
+<meta property="og:image" content="https://bestedaniil.github.io/portfolio/images/og.jpg">
+<meta property="og:image:alt" content="Портфолио Daniil — сайты и автоматизация">
+<meta name="twitter:card" content="summary_large_image">
+<!-- /content:meta -->
+  <meta name="theme-color" content="#0b0d12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b0d12'/%3E%3Cpath d='M10 7v17l4.6-4 3.3 7.2 3.2-1.4-3.3-7.1h6Z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/inter-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=10">
+  <script>
+    /* До первой отрисовки: собирать ли страницу курсорами. Не собираем при «уменьшить движение»
+       и при повторном визите в этой вкладке (R запускает вручную). Без JS страница сразу полная. */
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      var seen = false;
+      try {
+        seen = window.sessionStorage.getItem("portfolio:assembled") === "1";
+      } catch (error) {
+        seen = false;
+      }
+      var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !still) {
+        root.classList.add("assembling");
+      }
+    })();
+  </script>
+  <script type="importmap">
+    { "imports": {
+      "./js/assemble.js": "./js/assemble.js?v=10",
+      "./js/swarm.js": "./js/swarm.js?v=10",
+      "./js/timeline.js": "./js/timeline.js?v=10",
+      "./js/shapes.js": "./js/shapes.js?v=10",
+      "./js/easing.js": "./js/easing.js?v=10",
+      "./js/random.js": "./js/random.js?v=10"
+    } }
+  </script>
+  <script type="module" src="js/app.js?v=10"></script>
 </head>
 <body>
-
-  <!-- ===== Шапка ===== -->
-  <header class="header" id="top">
-    <div class="container header__inner">
-      <a href="#top" class="logo" aria-label="Daniil — на главную">
-        <span class="logo__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-        </span>
-        <span class="logo__text">
-          <b>Daniil</b>
-          <em>Делаю сайты для бизнеса</em>
-        </span>
-      </a>
-
-      <nav class="nav" id="nav" aria-label="Основное меню">
-        <a href="#works"><i>01</i>Работы</a>
-        <a href="#skills"><i>02</i>Что умею</a>
-        <a href="#process"><i>03</i>Как работаю</a>
-        <a href="#prices"><i>04</i>Цены</a>
-        <a href="#faq"><i>05</i>FAQ</a>
-        <a href="#contacts"><i>06</i>Контакты</a>
-        <a href="https://t.me/Beste_Daniil" class="btn btn--accent nav__cta" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-          Написать в Telegram
-        </a>
-      </nav>
-
-      <div class="header__actions">
-        <a href="https://t.me/Beste_Daniil" class="btn btn--accent header__cta" target="_blank" rel="noopener">Связаться</a>
-        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- ===== Главный экран ===== -->
-    <section class="hero" id="hero">
-      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="hero__grid" aria-hidden="true"></div>
-
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="pill reveal"><span class="dot" aria-hidden="true"></span>Открыт к новым проектам</p>
-          <h1 class="hero__title reveal">Сайты, которые <em>приводят</em> клиентов</h1>
-          <p class="hero__text reveal">Адаптив под все экраны, быстрая загрузка и запуск под ключ — от макета до вашего домена. Показываю результат живой ссылкой, а не на словах.</p>
-          <div class="hero__actions reveal">
-            <a href="#works" class="btn btn--accent btn--lg">Смотреть работы
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-            <a href="https://t.me/Beste_Daniil" class="btn btn--ghost btn--lg" target="_blank" rel="noopener">Связаться</a>
-          </div>
-          <ul class="hero__points reveal">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Адаптив под телефон и десктоп</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Быстрая загрузка</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Запуск на вашем домене</li>
-          </ul>
-        </div>
-
-        <!-- Витрина: свежий кейс на ноутбуке и телефоне -->
-        <a class="showcase reveal" id="showcase" href="#case-lookstar" aria-label="Кейс: сайт студии красоты Look Star">
-          <span class="showcase__stage">
-            <span class="device device--laptop">
-              <span class="device__bar" aria-hidden="true"><i></i><i></i><i></i><b>look-star</b></span>
-              <img src="images/lookstar.jpg" alt="Сайт студии красоты Look Star на компьютере" width="1200" height="750" />
-            </span>
-            <span class="device device--phone">
-              <img src="images/lookstar-mobile.jpg" alt="Сайт студии красоты Look Star на телефоне" width="390" height="844" />
-            </span>
-            <span class="showcase__badge"><span class="dot" aria-hidden="true"></span>Новый кейс · Look Star</span>
-          </span>
-        </a>
-      </div>
-
-      <a href="#works" class="scroll-hint" aria-label="Прокрутить к работам"><span></span></a>
-    </section>
-
-    <!-- ===== Бегущая строка ===== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span>Сайты-визитки</span><span>Лендинги</span><span>Многостраничные сайты</span><span>Адаптив от 320 px</span><span>Домен и HTTPS</span><span>Чистый код</span><span>Поддержка</span>
-        <span>Сайты-визитки</span><span>Лендинги</span><span>Многостраничные сайты</span><span>Адаптив от 320 px</span><span>Домен и HTTPS</span><span>Чистый код</span><span>Поддержка</span>
-      </div>
-    </div>
-
-    <!-- ===== Цифры ===== -->
-    <section class="stats" aria-label="Коротко в цифрах">
-      <div class="container stats__grid">
-        <div class="stat reveal"><b data-count="4">4</b><span>живых сайта<br />в портфолио</span></div>
-        <div class="stat reveal"><b data-count="7">7</b><span>страниц в последнем<br />проекте под ключ</span></div>
-        <div class="stat reveal"><b data-count="4">4</b><span>ширины экрана в каждой<br />проверке — от 320&nbsp;px</span></div>
-        <div class="stat reveal"><b>0</b><span>конструкторов —<br />только чистый код</span></div>
-      </div>
-    </section>
-
-    <!-- ===== Работы ===== -->
-    <section class="section" id="works">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><i>01</i>Работы</p>
-          <h2 class="section__title">Живые проекты, <em>а не картинки</em></h2>
-          <p class="section__lead">Каждый сайт можно открыть и потыкать прямо сейчас — меню, корзину, форму записи, прайс.</p>
-        </header>
-
-        <!-- Кейс: реальный заказ -->
-        <article class="case spot reveal" id="case-lookstar">
-          <div class="case__media">
-            <a class="frame case__shot" href="https://look-star.ru/" data-lookstar="" target="_blank" rel="noopener" aria-label="Открыть сайт студии красоты Look Star">
-              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="images/lookstar.jpg" alt="Главная страница сайта студии красоты Look Star" loading="lazy" width="1200" height="750" />
-            </a>
-            <a class="frame case__shot case__shot--small" href="https://look-star.ru/hair.html" data-lookstar="hair.html" target="_blank" rel="noopener" aria-label="Открыть страницу «Парикмахерский зал»">
-              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="images/lookstar-2.jpg" alt="Страница кабинета «Парикмахерский зал» с прайсом" loading="lazy" width="1200" height="750" />
-            </a>
-          </div>
-          <div class="case__body">
-            <p class="case__badge"><span class="dot" aria-hidden="true"></span>Реальный заказ</p>
-            <h3 class="case__name">Студия красоты Look Star</h3>
-            <p class="case__meta">Москва · многостраничный сайт под ключ · 7 страниц</p>
-            <p class="case__desc">Премиальный сайт для студии красоты: тёмно-зелёный стиль с золотом, отдельная страница на каждый кабинет, полный прайс и запись в мессенджеры в один клик.</p>
-            <!-- Отзыв салона: раскомментировать, когда будет текст от студии.
-            <blockquote class="case__review">
-              <p>«ТЕКСТ ОТЗЫВА»</p>
-              <footer>Look Star, студия красоты</footer>
-            </blockquote>
-            -->
-            <ol class="case__list">
-              <li>7 страниц со своим дизайном и адаптивом под телефон</li>
-              <li>Прайс на 12 категорий — раскрывающимися списками</li>
-              <li>Отбор и подготовка 20+ фото из съёмки на 305 кадров</li>
-              <li>Запись через WhatsApp и Telegram, отзывы с Яндекс.Карт</li>
-              <li>Страница обучения, акции, галерея и раздел мастеров</li>
-              <li>Проверка на всех ширинах экрана и публикация</li>
-            </ol>
-            <ul class="tags">
-              <li>премиальный дизайн</li>
-              <li>7 страниц</li>
-              <li>адаптив</li>
-              <li>HTML/CSS/JS</li>
-            </ul>
-            <div class="case__foot">
-              <a class="btn btn--accent" href="https://look-star.ru/" data-lookstar="" target="_blank" rel="noopener">
-                Открыть сайт
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-              </a>
-              <p class="case__price">Стоимость подобного проекта<b>60–90 тыс. ₽</b></p>
-            </div>
-          </div>
-        </article>
-
-        <p class="works__sub reveal">Демо-проекты</p>
-        <div class="works__grid">
-          <article class="project spot reveal">
-            <a class="frame project__shot" href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener" aria-label="Открыть сайт кофейни «Зерно»">
-              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="images/zerno.jpg" alt="Превью сайта кофейни «Зерно» — тёплый светлый дизайн с меню" loading="lazy" width="1200" height="750" />
-            </a>
-            <div class="project__body">
-              <h3 class="project__name">Кофейня «Зерно»</h3>
-              <p class="project__desc">Сайт-визитка с интерактивным меню и корзиной заказа. Тёплый фирменный стиль, категории напитков и выпечки, оформление заказа с проверкой данных. Адаптирован под телефон.</p>
-              <ul class="tags">
-                <li>корзина заказа</li>
-                <li>адаптив</li>
-                <li>HTML/CSS/JS</li>
-              </ul>
-              <a class="link-arrow" href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">
-                Открыть сайт
-                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project spot reveal">
-            <a class="frame project__shot" href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener" aria-label="Открыть сайт барбершопа «ТОПОР»">
-              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="images/barbershop.jpg" alt="Превью сайта барбершопа «ТОПОР» — тёмный брутальный дизайн" loading="lazy" width="1200" height="750" />
-            </a>
-            <div class="project__body">
-              <h3 class="project__name">Барбершоп «ТОПОР»</h3>
-              <p class="project__desc">Лендинг в тёмном брутальном стиле: карточки услуг с ценами, мастера, отзывы. Форма онлайн-записи с валидацией даты и телефона — кривая заявка не пройдёт. Быстрая загрузка, аккуратная типографика.</p>
-              <ul class="tags">
-                <li>форма записи</li>
-                <li>валидация</li>
-                <li>адаптив</li>
-              </ul>
-              <a class="link-arrow" href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">
-                Открыть сайт
-                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project spot reveal">
-            <a class="frame project__shot" href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener" aria-label="Открыть сайт детейлинг-центра STEEL &amp; GLOSS">
-              <span class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></span>
-              <img src="images/steel-gloss.jpg?v=2" alt="Превью сайта детейлинг-центра STEEL &amp; GLOSS — конфигуратор и карта кузова" loading="lazy" width="1200" height="750" />
-            </a>
-            <div class="project__body">
-              <h3 class="project__name">Детейлинг STEEL &amp; GLOSS</h3>
-              <p class="project__desc">Многостраничный сайт с онлайн-расчётом: клиент выбирает класс машины и пакеты, отмечает зоны бронеплёнки на SVG-схеме кузова и получает точную смету. Выбор сохраняется между страницами. Форма заявки с маской телефона.</p>
-              <ul class="tags">
-                <li>онлайн-расчёт</li>
-                <li>4 страницы</li>
-                <li>тесты</li>
-              </ul>
-              <a class="link-arrow" href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">
-                Открыть сайт
-                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
-              </a>
-            </div>
-          </article>
-        </div>
-
-        <p class="works__note reveal">Демо — работающие сайты: открывайте, тыкайте меню, корзину и форму записи.</p>
-      </div>
-    </section>
-
-    <!-- ===== Что умею ===== -->
-    <section class="section" id="skills">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><i>02</i>Что умею</p>
-          <h2 class="section__title">Всё, чтобы сайт <em>работал на вас</em></h2>
-        </header>
-
-        <div class="skills__grid">
-          <article class="skill spot reveal">
-            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
-            <h3>Сайты-визитки и лендинги</h3>
-            <p>Страницы, которые продают, а не просто существуют: понятная структура и акцент на заявку.</p>
-          </article>
-          <article class="skill spot reveal">
-            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
-            <h3>Адаптивная вёрстка</h3>
-            <p>Одинаково аккуратно на телефоне, планшете и десктопе — проверяю на реальных размерах.</p>
-          </article>
-          <article class="skill spot reveal">
-            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-            <h3>Публикация и домен под ключ</h3>
-            <p>Размещу сайт в интернете и подключу ваш домен — вам останется только дать ссылку клиентам.</p>
-          </article>
-          <article class="skill spot reveal">
-            <span class="skill__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-            <h3>Правки и поддержка</h3>
-            <p>Сайт живой: обновляю тексты, цены и разделы, когда у бизнеса что-то меняется.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Как работаю ===== -->
-    <section class="section" id="process">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><i>03</i>Как работаю</p>
-          <h2 class="section__title">Четыре <em>простых</em> шага</h2>
-          <p class="section__lead">Без сюрпризов: вы видите прогресс на каждом этапе.</p>
-        </header>
-
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step__num">01</span>
-            <h3>Обсуждаем задачу</h3>
-            <p>Созвон или переписка: цели, референсы, сроки. Разбираемся, что и зачем нужно.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">02</span>
-            <h3>Делаю и показываю живую ссылку</h3>
-            <p>Вы смотрите результат прямо в браузере — на реальном сайте, а не на словах.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">03</span>
-            <h3>Правим до результата</h3>
-            <p>Вношу правки, пока не станет как надо. Согласовываем — и идём дальше.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">04</span>
-            <h3>Запускаю на вашем домене</h3>
-            <p>Публикую, подключаю домен и остаюсь на связи для правок.</p>
-          </li>
-        </ol>
-
-        <div class="terms reveal">
-          <h3 class="terms__title">Условия работы</h3>
-          <div class="terms__grid">
-            <article class="term">
-              <h4>Оплата</h4>
-              <p>Предоплата 50%, остаток — после сдачи сайта.</p>
-            </article>
-            <article class="term">
-              <h4>Правки</h4>
-              <p>В стоимость входят 2 круга правок, дальше — по договорённости.</p>
-            </article>
-            <article class="term">
-              <h4>От вас</h4>
-              <p>Тексты, фото, логотип и контакты.</p>
-            </article>
-            <article class="term" id="terms-time">
-              <h4>Сроки</h4>
-              <ul class="term__list">
-                <li><span>Визитка</span><b>3–5 дней</b></li>
-                <li><span>Лендинг</span><b>5–7 дней</b></li>
-                <li><span>Многостраничный сайт</span><b>2–3 недели</b></li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Цены ===== -->
-    <section class="section" id="prices">
-      <div class="container">
-        <header class="section__head reveal">
-          <p class="eyebrow"><i>04</i>Цены</p>
-          <h2 class="section__title">Сколько это <em>стоит</em></h2>
-          <p class="section__lead">Ориентиры по реальным проектам. Точную сумму назову после короткого обсуждения задачи.</p>
-        </header>
-
-        <div class="prices__grid">
-          <article class="price spot reveal">
-            <h3>Сайт на одной странице</h3>
-            <p class="price__sub">Визитка или лендинг</p>
-            <p class="price__val"><small>от</small> 10 000 ₽</p>
-            <h4 class="price__label">Кому</h4>
-            <p class="price__text">чтобы быстро появиться в интернете, рекламировать одну услугу, акцию или мастера.</p>
-            <h4 class="price__label">Что получаете</h4>
-            <p class="price__text">одна страница, где клиент сразу видит главное и оставляет заявку.</p>
-            <h4 class="price__label">Примеры:</h4>
-            <p class="price__text price__links">
-              <a href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">Кофейня «Зерно»</a>
-              <a href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">Барбершоп «ТОПОР»</a>
-            </p>
-          </article>
-          <article class="price spot reveal">
-            <h3>Сайт с онлайн-расчётом</h3>
-            <p class="price__sub">Калькулятор или конфигуратор</p>
-            <p class="price__val"><small>от</small> 40 000 ₽</p>
-            <h4 class="price__label">Кому</h4>
-            <p class="price__text">если клиенты постоянно спрашивают «сколько будет стоить?», а менеджер тратит на это время.</p>
-            <h4 class="price__label">Что получаете</h4>
-            <p class="price__text">клиент сам выбирает услуги и видит точную цену, а вам приходит готовая заявка со сметой.</p>
-            <h4 class="price__label">Пример:</h4>
-            <p class="price__text price__links">
-              <a href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">Детейлинг STEEL &amp; GLOSS — смета по зонам кузова</a>
-            </p>
-          </article>
-          <article class="price price--main spot reveal">
-            <h3>Сайт компании</h3>
-            <p class="price__sub">Несколько страниц</p>
-            <p class="price__val"><small>от</small> 50 000 ₽</p>
-            <h4 class="price__label">Кому</h4>
-            <p class="price__text">если у вас много услуг, большой прайс, галерея работ или несколько точек.</p>
-            <h4 class="price__label">Что получаете</h4>
-            <p class="price__text">у каждой услуги своя страница, прайс раскрывается списками, есть отзывы и запись в один клик.</p>
-            <h4 class="price__label">Пример:</h4>
-            <p class="price__text price__links">
-              <a href="https://look-star.ru/" data-lookstar="" target="_blank" rel="noopener">Студия красоты Look Star — 7&nbsp;страниц</a>
-            </p>
-          </article>
-        </div>
-
-        <p class="prices__cta reveal"><a href="https://t.me/Beste_Daniil" class="btn btn--accent" target="_blank" rel="noopener">Обсудить проект</a></p>
-
-        <div class="extras reveal">
-          <p class="extras__title">Дополнительно</p>
-          <ul class="extras__list">
-            <li>
-              <div><h3>Новый раздел</h3><p>Например, мастера с фото и описаниями — в стиле сайта, на всех экранах</p></div>
-              <b>10–15 тыс. ₽</b>
-            </li>
-            <li>
-              <div><h3>Подключение домена</h3><p>Настройка DNS и HTTPS. Сам домен оплачивается отдельно</p></div>
-              <b>3–5 тыс. ₽</b>
-            </li>
-            <li>
-              <div><h3>Поддержка</h3><p>Цены, акции, фото, тексты. Без админки — правки делаю я</p></div>
-              <b>3–5 тыс. ₽ <small>/ мес</small></b>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="section" id="faq">
-      <div class="container faq">
-        <header class="section__head faq__head reveal">
-          <p class="eyebrow"><i>05</i>FAQ</p>
-          <h2 class="section__title">Частые <em>вопросы</em></h2>
-          <p class="section__lead">Не нашли ответ? Спросите в <a href="https://t.me/Beste_Daniil" target="_blank" rel="noopener">Telegram</a> — отвечу.</p>
-        </header>
-
-        <div class="faq__list reveal">
-          <details class="faq__item">
-            <summary>Сколько стоят домен и хостинг?</summary>
-            <div class="faq__answer"><p>Домен — примерно 200–300 ₽ в год. Его оплачивает клиент, и оформляется он на клиента, чтобы сайт всегда оставался вашим. Подключить домен помогаю я. Хостинг для таких сайтов не нужен — размещаю бесплатно.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Сколько делается сайт?</summary>
-            <div class="faq__answer"><p>Визитка — 3–5 дней, лендинг — 5–7 дней, многостраничный сайт — 2–3 недели. Подробнее — в <a href="#terms-time">условиях работы</a>.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Смогу ли я сам менять тексты?</summary>
-            <div class="faq__answer"><p>Тексты, цены и фото меняю я по вашему запросу — быстро и без риска что-то сломать. Для постоянных изменений есть поддержка.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Что если результат не понравится?</summary>
-            <div class="faq__answer"><p>Правки входят в стоимость. Сначала согласуем макет или демо по живой ссылке — и только потом доводим до финала.</p></div>
-          </details>
-          <details class="faq__item">
-            <summary>Работаете по договору?</summary>
-            <div class="faq__answer"><p>Да. До начала работы фиксируем задачу, сроки и количество правок.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Контакты ===== -->
-    <section class="section contacts" id="contacts">
-      <div class="container">
-        <div class="cta reveal">
-          <div class="aurora aurora--soft" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p class="eyebrow"><i>06</i>Контакты</p>
-          <h2 class="cta__title">Нужен сайт? <em>Напишите</em></h2>
-          <p class="cta__text">Расскажите про задачу в двух словах — предложу решение и покажу примеры. Отвечаю в Telegram.</p>
-          <a href="https://t.me/Beste_Daniil" class="btn btn--accent btn--xl" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            Написать в Telegram
-          </a>
-          <p class="cta__handle">@Beste_Daniil</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Подвал ===== -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <a href="#top" class="footer__logo" aria-label="Наверх">
-        <span class="logo__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-        </span>
-        Daniil
-      </a>
-      <nav class="footer__nav" aria-label="Разделы">
-        <a href="#works">Работы</a>
-        <a href="#prices">Цены</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://t.me/Beste_Daniil" target="_blank" rel="noopener">Telegram</a>
-      </nav>
-      <p class="footer__copy">© 2026 · Сайты для бизнеса под ключ</p>
-    </div>
-  </footer>
-
-  <script src="js/script.js?v=9"></script>
+  <!-- content:body -->
+<a class="skip" href="#work">К работам</a>
+<header class="top">
+<div class="container top__inner">
+<a class="logo" href="#top" data-build="frame text"><span class="logo__mark" aria-hidden="true">D</span>Daniil</a>
+<nav class="nav" aria-label="Разделы" data-build="frame text"><a class="nav__link" href="#work">Работы</a><a class="nav__link" href="#stack">Стек</a><a class="nav__link" href="#prices">Цены</a><a class="nav__link" href="#faq">FAQ</a></nav>
+<a class="btn btn--small btn--ghost top__tg" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener" data-build="frame text color"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Telegram</span></a>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="top" data-section="hero" aria-labelledby="heroTitle">
+<div class="container hero__grid">
+<div class="hero__text">
+<h1 class="hero__title" id="heroTitle" data-build="frame text check">Daniil</h1>
+<p class="hero__role" data-build="frame text color check">Разрабатываю сайты и автоматизацию</p>
+<p class="hero__lead" data-build="frame text check">Сайты для бизнеса под ключ, онлайн-расчёты и центры заявок — на чистом коде, с тестами и запуском на вашем домене. Результат показываю живой ссылкой, а не на словах.</p>
+<div class="hero__actions">
+<a class="btn btn--accent" href="#work" data-build="frame text color check">Смотреть работы</a>
+<a class="btn btn--ghost" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener" data-build="frame text color check"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Написать в Telegram</span></a>
+</div>
+</div>
+<div class="hero__art" data-build="frame image check"><svg class="hero__art-svg" viewBox="0 0 320 240" role="img" aria-label="Окно браузера, которое собирают курсоры"><rect class="art-window" x="10" y="14" width="300" height="212" rx="14"/><rect class="art-bar" x="10" y="14" width="300" height="30" rx="14"/><circle class="art-dot" cx="30" cy="29" r="4"/><circle class="art-dot" cx="44" cy="29" r="4"/><circle class="art-dot" cx="58" cy="29" r="4"/><rect class="art-block art-block--accent" x="30" y="62" width="150" height="16" rx="5"/><rect class="art-block" x="30" y="88" width="220" height="9" rx="4"/><rect class="art-block" x="30" y="104" width="190" height="9" rx="4"/><rect class="art-frame" x="30" y="128" width="118" height="76" rx="8"/><rect class="art-frame" x="162" y="128" width="118" height="76" rx="8"/><path class="art-check" d="m250 142 7 7 13-15"/><path class="art-cursor art-cursor--a" d="M196 70v26l7-6 5 11 5-2-5-11h9Z"/><path class="art-cursor art-cursor--b" d="M112 150v26l7-6 5 11 5-2-5-11h9Z"/><path class="art-cursor art-cursor--c" d="M262 176v26l7-6 5 11 5-2-5-11h9Z"/></svg></div>
+</div>
+<div class="container"><ul class="stats" aria-label="Цифры"><li class="stat" data-build="frame text color check"><b class="stat__value">5</b><span class="stat__label">живых сайтов — открываются прямо сейчас</span></li><li class="stat" data-build="frame text color check"><b class="stat__value">6</b><span class="stat__label">проектов — сайты и автоматизация</span></li><li class="stat" data-build="frame text color check"><b class="stat__value">0</b><span class="stat__label">конструкторов — только чистый код</span></li></ul></div>
+</section>
+<section class="section" id="work" data-section="work" aria-labelledby="workTitle">
+<div class="container">
+<header class="section__head">
+<p class="eyebrow" data-build="frame text color">Работы</p>
+<h2 class="section__title" id="workTitle" data-build="frame text check">Что я сделал</h2>
+<p class="section__lead" data-build="frame text">Каждый сайт можно открыть и потыкать: меню, расчёт, заявки, формы.</p>
+</header>
+<div class="projects">
+<article class="project" id="project-lookstar" data-build="frame reveal check">
+<div class="project__preview" data-build="image"><img class="project__img" src="images/lookstar.jpg" alt="Главная страница сайта студии красоты Look Star" width="1200" height="750" loading="lazy" decoding="async"></div>
+<div class="project__body">
+<p class="project__kind" data-build="text color">Студия красоты · реальный заказ</p>
+<h3 class="project__title" data-build="text">Look Star</h3>
+<p class="project__text" data-build="text">Премиальный сайт для студии красоты: тёмно-зелёный стиль с золотом, отдельная страница на каждый кабинет, полный прайс и запись в мессенджеры в один клик.</p>
+<ul class="tags" aria-label="Теги" data-build="color"><li class="tag">7 страниц</li><li class="tag">адаптив</li><li class="tag">свой домен</li></ul>
+<a class="project__link" href="https://look-star.ru/" target="_blank" rel="noopener">Открыть look-star.ru<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+</div>
+</article>
+<article class="project" id="project-steel-gloss" data-build="frame reveal check">
+<div class="project__preview" data-build="image"><img class="project__img" src="images/steel-gloss.jpg" alt="Главная страница сайта детейлинга STEEL &amp; GLOSS" width="1200" height="750" loading="lazy" decoding="async"></div>
+<div class="project__body">
+<p class="project__kind" data-build="text color">Детейлинг · демо-проект</p>
+<h3 class="project__title" data-build="text">STEEL &amp; GLOSS</h3>
+<p class="project__text" data-build="text">Многостраничный сайт с онлайн-расчётом: клиент выбирает класс машины и пакеты, отмечает зоны бронеплёнки на схеме кузова и получает точную смету. Выбор сохраняется между страницами.</p>
+<ul class="tags" aria-label="Теги" data-build="color"><li class="tag">онлайн-расчёт</li><li class="tag">4 страницы</li><li class="tag">тесты</li></ul>
+<a class="project__link" href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">Открыть STEEL &amp; GLOSS<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+</div>
+</article>
+<article class="project" id="project-autograd" data-build="frame reveal check">
+<div class="project__preview" data-build="image"><img class="project__img" src="images/autograd.jpg" alt="Лента заявок в Центре заявок «АВТОГРАД»" width="1200" height="750" loading="lazy" decoding="async"></div>
+<div class="project__body">
+<p class="project__kind" data-build="text color">Автосалон · демо-проект</p>
+<h3 class="project__title" data-build="text">«АВТОГРАД» — Центр заявок для автосалона</h3>
+<p class="project__text" data-build="text">Заявки с сайта, Авито, auto.ru, звонков и Telegram в одном окне: SLA-таймер до первого ответа, разбор сообщений классификатором и по желанию ИИ, черновик ответа клиенту, дашборд по источникам.</p>
+<ul class="tags" aria-label="Теги" data-build="color"><li class="tag">SLA</li><li class="tag">классификатор</li><li class="tag">дашборд</li><li class="tag">тесты</li></ul>
+<a class="project__link" href="https://bestedaniil.github.io/autograd/" target="_blank" rel="noopener">Открыть Центр заявок<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+</div>
+</article>
+<article class="project" id="project-hub" data-build="frame reveal check">
+<div class="project__preview" data-build="image"><svg class="project__art" viewBox="0 0 400 250" role="img" aria-label="Схема: задача в центре, вокруг — агенты разведчик, исполнитель, тестировщик и ревьюер"><path class="hub-link" d="M200 125 90 60M200 125l110-65M200 125 90 190M200 125l110 65"/><rect class="hub-core" x="150" y="100" width="100" height="50" rx="12"/><text class="hub-text hub-text--core" x="200" y="131">задача</text><rect class="hub-node" x="30" y="38" width="120" height="44" rx="10"/><text class="hub-text" x="90" y="65">разведчик</text><rect class="hub-node" x="250" y="38" width="120" height="44" rx="10"/><text class="hub-text" x="310" y="65">исполнитель</text><rect class="hub-node" x="30" y="168" width="120" height="44" rx="10"/><text class="hub-text" x="90" y="195">тестировщик</text><rect class="hub-node" x="250" y="168" width="120" height="44" rx="10"/><text class="hub-text" x="310" y="195">ревьюер</text></svg></div>
+<div class="project__body">
+<p class="project__kind" data-build="text color">Автоматизация · внутренний инструмент</p>
+<h3 class="project__title" data-build="text">Мультиагентный хаб</h3>
+<p class="project__text" data-build="text">Команда ИИ-агентов: разведчик, исполнитель, тестировщик и ревьюер сами проверяют сайты — я ставлю задачу, принимаю отчёт и начинаю правки. Внутри — разные нейросети, бесплатные и платные, и MCP-серверы для Claude.</p>
+<ul class="tags" aria-label="Теги" data-build="color"><li class="tag">ИИ-агенты</li><li class="tag">MCP</li><li class="tag">Claude</li></ul>
+<p class="project__note">Внутренний инструмент — без публичной ссылки</p>
+</div>
+</article>
+</div>
+<p class="work__more" data-build="frame text">Ещё два демо: <a href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">Кофейня «Зерно»</a>, <a href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">Барбершоп «ТОПОР»</a></p>
+</div>
+</section>
+<section class="section" id="stack" data-section="stack" aria-labelledby="stackTitle">
+<div class="container">
+<header class="section__head">
+<p class="eyebrow" data-build="frame text color">Стек</p>
+<h2 class="section__title" id="stackTitle" data-build="frame text check">Чем работаю</h2>
+</header>
+<div class="stack">
+<div class="stack__group" data-build="frame text color check"><h3 class="stack__title">Сайты</h3><ul class="chips"><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">JavaScript, ES-модули</li><li class="chip">адаптив от 320 px</li></ul></div>
+<div class="stack__group" data-build="frame text color check"><h3 class="stack__title">Проверка</h3><ul class="chips"><li class="chip">Node test runner</li><li class="chip">Playwright</li><li class="chip">проверка поломкой</li><li class="chip">Lighthouse</li></ul></div>
+<div class="stack__group" data-build="frame text color check"><h3 class="stack__title">Запуск</h3><ul class="chips"><li class="chip">Git</li><li class="chip">GitHub Pages</li><li class="chip">домен и HTTPS</li></ul></div>
+<div class="stack__group" data-build="frame text color check"><h3 class="stack__title">Автоматизация</h3><ul class="chips"><li class="chip">Claude Code</li><li class="chip">ИИ-агенты</li><li class="chip">MCP</li><li class="chip">Python</li></ul></div>
+</div>
+</div>
+</section>
+<section class="section" id="prices" data-section="prices" aria-labelledby="pricesTitle">
+<div class="container">
+<header class="section__head">
+<p class="eyebrow" data-build="frame text color">Цены</p>
+<h2 class="section__title" id="pricesTitle" data-build="frame text check">Сколько это стоит</h2>
+<p class="section__lead" data-build="frame text">Ориентиры по реальным проектам. Точную сумму назову после короткого обсуждения задачи.</p>
+</header>
+<div class="prices">
+<article class="price" data-build="frame reveal text color check">
+<h3 class="price__title">Сайт на одной странице</h3>
+<p class="price__sub">Визитка или лендинг</p>
+<p class="price__val"><small>от</small> 10 000 ₽</p>
+<h4 class="price__label">Кому</h4>
+<p class="price__text">чтобы быстро появиться в интернете, рекламировать одну услугу, акцию или мастера.</p>
+<h4 class="price__label">Что получаете</h4>
+<p class="price__text">одна страница, где клиент сразу видит главное и оставляет заявку.</p>
+<h4 class="price__label">Примеры:</h4>
+<p class="price__text price__links"><a href="https://bestedaniil.github.io/zerno/" target="_blank" rel="noopener">Кофейня «Зерно»</a>
+<a href="https://bestedaniil.github.io/barbershop/" target="_blank" rel="noopener">Барбершоп «ТОПОР»</a></p>
+</article>
+<article class="price" data-build="frame reveal text color check">
+<h3 class="price__title">Сайт с онлайн-расчётом</h3>
+<p class="price__sub">Калькулятор или конфигуратор</p>
+<p class="price__val"><small>от</small> 40 000 ₽</p>
+<h4 class="price__label">Кому</h4>
+<p class="price__text">если клиенты постоянно спрашивают «сколько будет стоить?», а менеджер тратит на это время.</p>
+<h4 class="price__label">Что получаете</h4>
+<p class="price__text">клиент сам выбирает услуги и видит точную цену, а вам приходит готовая заявка со сметой.</p>
+<h4 class="price__label">Пример:</h4>
+<p class="price__text price__links"><a href="https://bestedaniil.github.io/steel-gloss/" target="_blank" rel="noopener">Детейлинг STEEL &amp; GLOSS — смета по зонам кузова</a></p>
+</article>
+<article class="price price--main" data-build="frame reveal text color check">
+<h3 class="price__title">Сайт компании</h3>
+<p class="price__sub">Несколько страниц</p>
+<p class="price__val"><small>от</small> 50 000 ₽</p>
+<h4 class="price__label">Кому</h4>
+<p class="price__text">если у вас много услуг, большой прайс, галерея работ или несколько точек.</p>
+<h4 class="price__label">Что получаете</h4>
+<p class="price__text">у каждой услуги своя страница, прайс раскрывается списками, есть отзывы и запись в один клик.</p>
+<h4 class="price__label">Пример:</h4>
+<p class="price__text price__links"><a href="https://look-star.ru/" target="_blank" rel="noopener">Студия красоты Look Star — 7 страниц</a></p>
+</article>
+</div>
+<p class="prices__cta"><a class="btn btn--accent" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener" data-build="frame text color check">Обсудить проект</a></p>
+</div>
+</section>
+<section class="section" id="faq" data-section="faq" aria-labelledby="faqTitle">
+<div class="container faq">
+<header class="section__head">
+<p class="eyebrow" data-build="frame text color">FAQ</p>
+<h2 class="section__title" id="faqTitle" data-build="frame text check">Частые вопросы</h2>
+<p class="section__lead" data-build="frame text">Не нашли ответ? Спросите в Telegram — отвечу.</p>
+</header>
+<div class="faq__list">
+<details class="faq__item" data-build="frame text check"><summary>Сколько стоят домен и хостинг?</summary><div class="faq__answer"><p>Домен — примерно 200–300 ₽ в год. Его оплачивает клиент, и оформляется он на клиента, чтобы сайт всегда оставался вашим. Подключить домен помогаю я. Хостинг для таких сайтов не нужен — размещаю бесплатно.</p></div></details>
+<details class="faq__item" data-build="frame text check"><summary>Сколько делается сайт?</summary><div class="faq__answer"><p>Визитка — 3–5 дней, лендинг — 5–7 дней, многостраничный сайт — 2–3 недели.</p></div></details>
+<details class="faq__item" data-build="frame text check"><summary>Смогу ли я сам менять тексты?</summary><div class="faq__answer"><p>Тексты, цены и фото меняю я по вашему запросу — быстро и без риска что-то сломать. Для постоянных изменений есть поддержка.</p></div></details>
+<details class="faq__item" data-build="frame text check"><summary>Что если результат не понравится?</summary><div class="faq__answer"><p>Правки входят в стоимость. Сначала согласуем макет или демо по живой ссылке — и только потом доводим до финала.</p></div></details>
+<details class="faq__item" data-build="frame text check"><summary>Работаете по договору?</summary><div class="faq__answer"><p>Да. До начала работы фиксируем задачу, сроки и количество правок.</p></div></details>
+</div>
+</div>
+</section>
+<section class="section contact" id="contact" aria-labelledby="contactTitle">
+<div class="container contact__inner">
+<div class="swarm" id="swarm">
+<canvas class="swarm__canvas" id="swarmCanvas" aria-hidden="true" data-word="ДЛЯ ВАС"></canvas>
+</div>
+<h2 class="contact__title" id="contactTitle">Есть задача?</h2>
+<p class="contact__text">Расскажите про неё в двух словах — предложу решение и покажу примеры. Отвечаю в Telegram.</p>
+<a class="btn btn--accent btn--xl" href="https://t.me/Beste_Daniil" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Написать</span></a>
+<p class="contact__handle">@Beste_Daniil</p>
+</div>
+</section>
+</main>
+<footer class="foot">
+<div class="container foot__inner">
+<p class="foot__caption" id="buildCaption">Страницу собрали 18 курсоров. R — ещё раз, S — медленно</p>
+<p class="foot__copy">© 2026 · Daniil</p>
+</div>
+</footer>
+<!-- /content:body -->
+  <div class="crew" id="crew" aria-hidden="true"></div>
 </body>
 </html>
